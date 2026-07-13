@@ -1,0 +1,49 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/jensonhirst/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "FTAP Copy UI", HidePremium = false, SaveConfig = true, ConfigFolder = "FTAPCOPYHUB"})
+
+local MostCopys = Window:MakeTab({
+    Name = "Most Copys",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+local FlingThisAndThat = Window:MakeTab({
+    Name = "Fling this and that",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+local Credits = Window:MakeTab({
+    Name = "Credits",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local MenuFolder = ReplicatedStorage:FindFirstChild("Menu")
+local CharacterFolder = ReplicatedStorage:FindFirstChild("Character")
+
+local InfMoney = MenuFolder and MenuFolder:FindFirstChild("GivePlayerCoinsEvent")
+local PalletSpam = MenuFolder and MenuFolder:FindFirstChild("SpawnToyRemoteFunction")
+local ftatsafechat = CharacterFolder and CharacterFolder:FindFirstChild("SafeChat")
+
+MostCopys:AddButton({
+     Name = "Get Infinite Money",
+    Callback = function()
+        firesignal(InfMoney.OnClientEvent, 99999999999)
+     end    
+ })
+FlingThisAndThat:AddLabel("These are very detected.")
+FlingThisAndThat:AddToggle({
+    Name = "Safe chat spam",
+    Callback = function()
+        ftatsafechat:FireServer(
+            "Wanna build?"
+        )
+        task.wait(1)
+    end   
+})
+
+Credits:AddLabel("FTAP Copy Hub made by That1c0ne")
+Credits:AddLabel("Ill update this whenever i feel like it.")    
+Credits:AddLabel("If you want more scripts, check out my discord: https://discord.gg/va2taXuFxZ")
+
+OrionLib:Init()
